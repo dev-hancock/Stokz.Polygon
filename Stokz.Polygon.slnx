@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Stokz.Polygon/Stokz.Polygon.csproj" />
+  <Project Path="Stokz.Worker/Stokz.Worker.csproj" Id="82866f2c-46e0-4c25-af13-e03dd05d98ae" />
+</Solution>
