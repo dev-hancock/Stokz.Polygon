@@ -1,15 +1,14 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.Extensions.Options;
-using Stokz.Polygon.Configuration;
 
-namespace Stokz.Polygon;
+namespace Stokz.Polygon.Configuration;
 
 /// <summary>
-/// Validator for Polygon.io options.
+///     Validator for Polygon.io options.
 /// </summary>
 internal sealed class PolygonOptionsValidator : IValidateOptions<PolygonOptions>
 {
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public ValidateOptionsResult Validate(string? name, PolygonOptions options)
     {
         try

@@ -1,4 +1,4 @@
-namespace Stokz.Polygon.Models;
+namespace Stokz.Polygon.Exceptions;
 
 /// <summary>
 ///     Exception thrown when a Polygon.io API request fails.
@@ -58,30 +58,4 @@ public class PolygonApiException : Exception
 
         return $"{base.ToString()}\n{details}";
     }
-}
-
-/// <summary>
-///     Exception thrown when rate limiting is encountered.
-/// </summary>
-public sealed class PolygonRateLimitException : PolygonApiException
-{
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="PolygonRateLimitException" /> class.
-    /// </summary>
-    /// <param name="message">The error message.</param>
-    /// <param name="retryAfterSeconds">The number of seconds to wait before retrying.</param>
-    /// <param name="requestId">The request ID.</param>
-    public PolygonRateLimitException(
-        string message = "Rate limit exceeded.",
-        int? retryAfterSeconds = null,
-        string? requestId = null)
-        : base(message, "RATE_LIMIT", requestId, 429)
-    {
-        RetryAfterSeconds = retryAfterSeconds;
-    }
-
-    /// <summary>
-    ///     Gets the number of seconds to wait before retrying.
-    /// </summary>
-    public int? RetryAfterSeconds { get; }
 }

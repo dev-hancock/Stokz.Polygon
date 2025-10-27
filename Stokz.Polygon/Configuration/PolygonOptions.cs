@@ -3,47 +3,42 @@ using System.ComponentModel.DataAnnotations;
 namespace Stokz.Polygon.Configuration;
 
 /// <summary>
-/// Configuration options for the Polygon.io SDK.
+///     Configuration options for the Polygon.io SDK.
 /// </summary>
 public sealed class PolygonOptions
 {
     /// <summary>
-    /// Gets or sets the API key for authenticating with Polygon.io.
+    ///     Gets or sets the base URI used for HTTP requests to the Polygon.io API.
+    /// </summary>
+    public Uri HttpBaseUrl { get; set; } = new("https://api.polygon.io");
+
+    /// <summary>
+    ///     Gets or sets the API key for authenticating with Polygon.io.
     /// </summary>
     public string ApiKey { get; set; } = string.Empty;
 
     /// <summary>
-    /// Gets or sets the base URL for REST API requests.
-    /// </summary>
-    public Uri BaseUrl { get; set; } = new("https://api.polygon.io");
-
-    /// <summary>
-    /// Gets or sets the WebSocket URL for real-time streaming.
-    /// </summary>
-    public Uri WebSocketUrl { get; set; } = new ("wss://socket.polygon.io");
-
-    /// <summary>
-    /// Gets or sets the request timeout in seconds.
+    ///     Gets or sets the request timeout in seconds.
     /// </summary>
     public int TimeoutSeconds { get; set; } = 30;
 
     /// <summary>
-    /// Gets or sets whether to enable automatic retry on transient failures.
+    ///     Gets or sets the maximum number of requests allowed within the rate limit window.
     /// </summary>
-    public bool EnableRetry { get; set; } = true;
+    public int RateLimitCount { get; set; } = 100;
 
     /// <summary>
-    /// Gets or sets the maximum number of retry attempts.
+    ///     Gets or sets the time interval, in seconds, to wait before retrying after a rate limit is encountered.
+    /// </summary>
+    public int RateLimitTime { get; set; } = 1;
+
+    /// <summary>
+    ///     Gets or sets the maximum number of retry attempts.
     /// </summary>
     public int MaxRetryAttempts { get; set; } = 3;
 
     /// <summary>
-    /// Gets or sets the WebSocket reconnection timeout in seconds.
-    /// </summary>
-    public int WebSocketReconnectTimeoutSeconds { get; set; } = 30;
-
-    /// <summary>
-    /// Validates the configuration options.
+    ///     Validates the configuration options.
     /// </summary>
     /// <exception cref="ValidationException">Thrown when configuration is invalid.</exception>
     public void Validate()
@@ -53,14 +48,19 @@ public sealed class PolygonOptions
             throw new ValidationException("ApiKey must be configured.");
         }
 
-        if (BaseUrl is null)
+        if (HttpBaseUrl is null)
         {
-            throw new ValidationException("BaseUrl must be configured.");
+            throw new ValidationException("HttpBaseUrl must be configured.");
         }
 
-        if (WebSocketUrl is null)
+        if (RateLimitCount <= 0)
         {
-            throw new ValidationException("WebSocketUrl must be configured.");
+            throw new ValidationException("RateLimitCount must be greater than 0.");
+        }
+
+        if (RateLimitTime <= 0)
+        {
+            throw new ValidationException("RateLimitTime must be greater than 0.");
         }
 
         if (TimeoutSeconds <= 0)
@@ -71,11 +71,6 @@ public sealed class PolygonOptions
         if (MaxRetryAttempts < 0)
         {
             throw new ValidationException("MaxRetryAttempts must be non-negative.");
-        }
-
-        if (WebSocketReconnectTimeoutSeconds <= 0)
-        {
-            throw new ValidationException("WebSocketReconnectTimeoutSeconds must be greater than 0.");
         }
     }
 }

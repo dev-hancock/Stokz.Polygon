@@ -1,20 +1,20 @@
-using Stokz.Polygon.Models;
-using Stokz.Polygon.Models.Stocks;
-using Stokz.Polygon.Rest;
-using Stokz.Polygon.Rest.Requests;
 using System.Runtime.CompilerServices;
+using Stokz.Polygon.Extensions;
+using Stokz.Polygon.Rest.Clients;
+using Stokz.Polygon.Rest.Models;
+using Stokz.Polygon.Rest.Requests;
 
 namespace Stokz.Polygon.Services;
 
 /// <summary>
-/// Service for accessing ticker/stock data from Polygon.io.
+///     Service for accessing ticker/stock data from Polygon.io.
 /// </summary>
 public sealed class TickersService
 {
     private readonly ITickersClient _client;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="TickersService"/> class.
+    ///     Initializes a new instance of the <see cref="TickersService" /> class.
     /// </summary>
     /// <param name="client">The tickers Refit client.</param>
     public TickersService(ITickersClient client)
@@ -23,7 +23,7 @@ public sealed class TickersService
     }
 
     /// <summary>
-    /// Gets a list of tickers with automatic pagination.
+    ///     Gets a list of tickers with automatic pagination.
     /// </summary>
     /// <param name="request">Optional request filter.</param>
     /// <param name="ct">Cancellation token.</param>
@@ -40,7 +40,7 @@ public sealed class TickersService
                 .GetTickersAsync(
                     request,
                     cursor,
-                    ct: ct)
+                    ct)
                 .GetResult()
                 .ConfigureAwait(false);
 
@@ -64,7 +64,7 @@ public sealed class TickersService
     }
 
     /// <summary>
-    /// Gets detailed information about a ticker.
+    ///     Gets detailed information about a ticker.
     /// </summary>
     /// <param name="ticker">The ticker symbol.</param>
     /// <param name="date">Optional date for historical data (YYYY-MM-DD).</param>
@@ -82,15 +82,15 @@ public sealed class TickersService
 
         return await _client
             .GetTickerDetailsAsync(
-                ticker, 
-                date, 
-                ct: ct)
+                ticker,
+                date,
+                ct)
             .Unwrap()
             .ConfigureAwait(false);
     }
 
     /// <summary>
-    /// Gets short volume data with automatic pagination.
+    ///     Gets short volume data with automatic pagination.
     /// </summary>
     /// <param name="request">The request filter.</param>
     /// <param name="ct">Cancellation token.</param>
@@ -112,7 +112,7 @@ public sealed class TickersService
                 .GetShortVolumeAsync(
                     request,
                     cursor,
-                    ct: ct)
+                    ct)
                 .GetResult()
                 .ConfigureAwait(false);
 
@@ -136,7 +136,7 @@ public sealed class TickersService
     }
 
     /// <summary>
-    /// Gets short interest data with automatic pagination.
+    ///     Gets short interest data with automatic pagination.
     /// </summary>
     /// <param name="request">The request filter.</param>
     /// <param name="ct">Cancellation token.</param>
@@ -158,7 +158,7 @@ public sealed class TickersService
                 .GetShortInterestAsync(
                     request,
                     cursor,
-                    ct: ct)
+                    ct)
                 .GetResult()
                 .ConfigureAwait(false);
 

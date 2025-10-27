@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace Stokz.Polygon.Serialisation;
 
 /// <summary>
-/// JSON converter for nullable <see cref="DateTimeOffset"/> values represented as Unix epoch milliseconds.
+///     JSON converter for nullable <see cref="DateTimeOffset" /> values represented as Unix epoch milliseconds.
 /// </summary>
 internal class DateTimeOffsetConverter : JsonConverter<DateTimeOffset?>
 {

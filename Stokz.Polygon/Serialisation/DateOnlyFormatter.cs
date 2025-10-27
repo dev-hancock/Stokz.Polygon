@@ -6,12 +6,12 @@ using Stokz.Polygon.Utils;
 namespace Stokz.Polygon.Serialisation;
 
 /// <summary>
-/// A Refit URL parameter formatter for <see cref="DateOnly"/> values using the SDK's date format.
+///     A Refit URL parameter formatter for <see cref="DateOnly" /> values using the SDK's date format.
 /// </summary>
 public class DateOnlyFormatter : IUrlParameterFormatter
 {
     /// <summary>
-    /// Formats a parameter value for inclusion in a URL.
+    ///     Formats a parameter value for inclusion in a URL.
     /// </summary>
     /// <param name="parameterValue">The parameter value.</param>
     /// <param name="attributeProvider">The attribute provider.</param>

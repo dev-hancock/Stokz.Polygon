@@ -1,17 +1,20 @@
-namespace Stokz.Polygon.Models;
+using Stokz.Polygon.Exceptions;
+using Stokz.Polygon.Rest.Results;
+
+namespace Stokz.Polygon.Extensions;
 
 /// <summary>
-/// Extension methods for working with <see cref="Result{T}"/> responses.
+///     Extension methods for working with <see cref="Result{T}" /> responses.
 /// </summary>
 public static class ResultExtensions
 {
     /// <summary>
-    /// Awaits the task, validates the API response, and throws a <see cref="PolygonApiException"/>
-    /// if the response status indicates failure.
+    ///     Awaits the task, validates the API response, and throws a <see cref="PolygonApiException" />
+    ///     if the response status indicates failure.
     /// </summary>
     /// <typeparam name="T">The wrapped result type.</typeparam>
-    /// <param name="task">The task returning a <see cref="Result{T}"/>.</param>
-    /// <returns>The validated <see cref="Result{T}"/>.</returns>
+    /// <param name="task">The task returning a <see cref="Result{T}" />.</param>
+    /// <returns>The validated <see cref="Result{T}" />.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the provided task is null.</exception>
     /// <exception cref="PolygonApiException">Thrown when the API response indicates failure.</exception>
     public static async Task<Result<T>> GetResult<T>(this Task<Result<T>> task)
@@ -35,10 +38,10 @@ public static class ResultExtensions
     }
 
     /// <summary>
-    /// Awaits and unwraps the value from a <see cref="Result{T}"/> response, validating success first.
+    ///     Awaits and unwraps the value from a <see cref="Result{T}" /> response, validating success first.
     /// </summary>
     /// <typeparam name="T">The wrapped result type.</typeparam>
-    /// <param name="task">The task returning a <see cref="Result{T}"/>.</param>
+    /// <param name="task">The task returning a <see cref="Result{T}" />.</param>
     /// <returns>The unwrapped value.</returns>
     /// <exception cref="ArgumentNullException">Thrown when the provided task is null.</exception>
     /// <exception cref="PolygonApiException">Thrown when the API response indicates failure.</exception>

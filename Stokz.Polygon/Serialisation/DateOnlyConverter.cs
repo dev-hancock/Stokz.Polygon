@@ -1,12 +1,12 @@
-using Stokz.Polygon.Utils;
 using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Stokz.Polygon.Utils;
 
 namespace Stokz.Polygon.Serialisation;
 
 /// <summary>
-/// JSON converter for nullable <see cref="DateOnly"/> values using the SDK's standard date format.
+///     JSON converter for nullable <see cref="DateOnly" /> values using the SDK's standard date format.
 /// </summary>
 public sealed class DateOnlyConverter : JsonConverter<DateOnly?>
 {

@@ -10,25 +10,6 @@
 		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 		<EnableNETAnalyzers>true</EnableNETAnalyzers>
 		<AnalysisLevel>latest-all</AnalysisLevel>
-
-		<!-- NuGet Package Metadata -->
-		<PackageId>Stokz.Polygon</PackageId>
-		<Version>1.0.0</Version>
-		<Authors>Stokz</Authors>
-		<Company>Stokz</Company>
-		<Product>Stokz.Polygon</Product>
-		<Description>A production-grade .NET SDK for Polygon.io REST and WebSocket APIs. Provides access to real-time and historical market data for stocks, options, forex, crypto, and more.</Description>
-		<PackageTags>polygon;stocks;options;forex;crypto;market-data;financial;trading;websocket;realtime</PackageTags>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageProjectUrl>https://github.com/stokz/polygon-dotnet</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/stokz/polygon-dotnet</RepositoryUrl>
-		<RepositoryType>git</RepositoryType>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PublishRepositoryUrl>true</PublishRepositoryUrl>
-		<EmbedUntrackedSources>true</EmbedUntrackedSources>
-		<IncludeSymbols>true</IncludeSymbols>
-		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -36,15 +17,12 @@
 		<PackageReference Include="Microsoft.Extensions.Http" Version="9.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Options" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Http.Polly" Version="9.0.0" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
 		<PackageReference Include="Refit" Version="8.0.0" />
 		<PackageReference Include="Refit.HttpClientFactory" Version="8.0.0" />
 		<PackageReference Include="System.Reactive" Version="6.0.1" />
 		<PackageReference Include="Websocket.Client" Version="5.1.2" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Http\" />
 	</ItemGroup>
 
 </Project>

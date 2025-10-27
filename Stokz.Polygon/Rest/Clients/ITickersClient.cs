@@ -1,17 +1,17 @@
 using Refit;
-using Stokz.Polygon.Models;
-using Stokz.Polygon.Models.Stocks;
+using Stokz.Polygon.Rest.Models;
 using Stokz.Polygon.Rest.Requests;
+using Stokz.Polygon.Rest.Results;
 
-namespace Stokz.Polygon.Rest;
+namespace Stokz.Polygon.Rest.Clients;
 
 /// <summary>
-/// Refit interface for Polygon.io Stocks Ticker endpoints.
+///     Refit interface for Polygon.io Stocks Ticker endpoints.
 /// </summary>
 public interface ITickersClient
 {
     /// <summary>
-    /// Get a list of tickers.
+    ///     Get a list of tickers.
     /// </summary>
     /// <param name="request">Filter by ticker symbol.</param>
     /// <param name="cursor">Cursor for pagination.</param>
@@ -24,7 +24,7 @@ public interface ITickersClient
         CancellationToken ct = default);
 
     /// <summary>
-    /// Get detailed information about a ticker.
+    ///     Get detailed information about a ticker.
     /// </summary>
     /// <param name="ticker">The ticker symbol.</param>
     /// <param name="date">Optional date for historical data (YYYY-MM-DD).</param>
@@ -37,7 +37,7 @@ public interface ITickersClient
         CancellationToken ct = default);
 
     /// <summary>
-    /// Get short volume data for stocks.
+    ///     Get short volume data for stocks.
     /// </summary>
     /// <param name="cursor">Cursor for pagination.</param>
     /// <param name="ct">Cancellation token.</param>
@@ -49,7 +49,7 @@ public interface ITickersClient
         CancellationToken ct = default);
 
     /// <summary>
-    /// Get short interest data for stocks.
+    ///     Get short interest data for stocks.
     /// </summary>
     /// <param name="request"></param>
     /// <param name="cursor">Cursor for pagination.</param>
